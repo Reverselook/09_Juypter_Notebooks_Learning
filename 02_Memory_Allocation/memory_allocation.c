@@ -3,10 +3,14 @@
 
 int main(){
 
-    PVOID pAddress = HeapAlloc(hHeap:GetProcessHeap(), dwFlags:0, dwBytes:100);
+    // Method Using HeapAlloc()
+    PVOID pAddress = HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY, 100);
+    CHAR* cString = "This is a memory allocation example";
 
-    printf(_Format:"[+] Base Address Of Allocated Memory : 0x%p \n", pAddress);
-    printf(_Format:"[#] Press <Enter> To Quit ... ")
+    memcpy(pAddress, cString, strlen(cString));
+    
+    printf("[+] Base Address Of Allocated Memory : 0x%p \n", pAddress);
+    printf("[#] Press <Enter> To Quit ... ");
     getchar();
 
     return 0;
